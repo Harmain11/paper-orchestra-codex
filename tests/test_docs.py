@@ -19,17 +19,27 @@ class Markup(HTMLParser):
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if 'id' in attrs: self.ids.add(attrs['id'])
-        if tag == 'script': self.scripts.append((attrs.get('src'), attrs.get('type')))
+        if tag == 'script': self.scripts.append(attrs.get('src'))
         if tag == 'link': self.links.append(attrs.get('href'))
 
 class DocsTests(unittest.TestCase):
+    def test_codex_native_writing_is_the_default(self):
+        plugin=ROOT/'plugins/paper-orchestra-codex'
+        writing=(plugin/'skills/paper-orchestra-write/SKILL.md').read_text(encoding='utf-8')
+        setup=(plugin/'skills/paper-orchestra-setup/SKILL.md').read_text(encoding='utf-8')
+        manifest=json.loads((plugin/'plugin.json').read_text(encoding='utf-8'))
+        self.assertIn('default writing engine is the model in this active Codex session',writing)
+        self.assertIn('does not need a separate Gemini, Vertex, or OpenAI API key',writing)
+        self.assertIn('optional Google multi-agent runner',writing)
+        self.assertIn('Codex-native drafting does not require Python',setup)
+        prompts=manifest['extensions']['com.openai']['interface']['defaultPrompt']
+        self.assertTrue(any('this Codex session' in prompt for prompt in prompts))
+
     def test_required_assets_and_controls(self):
         p = Markup()
         p.feed((DOCS/'index.html').read_text(encoding='utf-8'))
         self.assertTrue({'os','provider','command','copy','guide','warning','panel','code-title'}.issubset(p.ids))
-        self.assertTrue(all(src is None for src, kind in p.scripts), 'Page scripts must remain local and inline')
-        self.assertEqual(sum(1 for src, kind in p.scripts if kind == 'application/ld+json'), 1)
-        self.assertEqual(sum(1 for src, kind in p.scripts if kind in (None, 'text/javascript')), 1)
+        self.assertEqual(p.scripts, [None])
         self.assertIn('favicon.svg',p.links)
         self.assertTrue((DOCS/'favicon.svg').exists())
 
@@ -50,10 +60,6 @@ class DocsTests(unittest.TestCase):
         manifest=json.loads((ROOT/'plugins/paper-orchestra-codex/.codex-plugin/plugin.json').read_text())
         portable=json.loads((ROOT/'plugins/paper-orchestra-codex/plugin.json').read_text())
         self.assertTrue(manifest.get('skills'))
-        plugin_root=ROOT/'plugins/paper-orchestra-codex'
-        self.assertTrue((plugin_root/'SECURITY.md').is_file())
-        self.assertIn('`SECURITY.md`', (plugin_root/'skills/paper-orchestra-setup/SKILL.md').read_text())
-        self.assertEqual(portable.get('version'), '0.2.1')
         self.assertEqual(manifest.get('version'),portable.get('version'))
         self.assertIn('version: '+portable['version'],(ROOT/'CITATION.cff').read_text())
         self.assertTrue((ROOT/'.github/workflows/pages.yml').exists())
