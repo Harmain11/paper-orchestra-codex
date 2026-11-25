@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "paper-orchestra-codex",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "An evidence-first Codex workflow for preparing, auditing, and writing research papers with Google Research's PaperOrchestra.",
   "author": {
     "name": "Harmain Dastgir",
