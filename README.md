@@ -47,18 +47,30 @@ flowchart LR
 
 ## Install the plugin
 
-**Option A: Public GitHub marketplace** (once this repository is public):
+**Codex desktop app (no terminal required):**
+
+1. Open **Customize → Plugins**.
+2. If the marketplace is not listed, use **Add** to add `https://github.com/Harmain11/paper-orchestra-codex`.
+3. Under **Personal**, open **Research Workflow Plugins**, select **PaperOrchestra for Codex**, then install it.
+4. Start a new Codex task and ask it to audit or draft from your research files. Codex-native drafting does not require a separate provider API key.
+
+To refresh a GitHub marketplace after an update, use the refresh control in the Plugins screen. Adding a marketplace does not automatically install or enable every plugin. [Codex plugin documentation](https://developers.openai.com/plugins/build/plugins).
+
+<details>
+<summary><b>Codex CLI installation</b></summary>
+
+If you use the Codex CLI, add the public marketplace from a terminal:
 
 ```bash
 codex plugin marketplace add Harmain11/paper-orchestra-codex
 ```
 
-Then open Codex's **plugin marketplace**, find **PaperOrchestra for Codex**, install it, and open a new task. Adding a marketplace does not automatically install or enable its plugins. [Codex plugin documentation](https://developers.openai.com/plugins/build/plugins).
+</details>
 
 <details>
-<summary><b>Option B — Local installation / before GitHub publication</b></summary>
+<summary><b>Option B — Local CLI marketplace</b></summary>
 
-Clone the repository or extract the source ZIP, keeping hidden folders such as `.agents` and `.codex-plugin`. From its root:
+Clone the repository or extract the source ZIP, keeping hidden folders such as `.agents` and `.codex-plugin`. From its root, use the Codex CLI:
 
 ```bash
 codex plugin marketplace add .
