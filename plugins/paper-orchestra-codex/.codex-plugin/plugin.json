@@ -1,0 +1,33 @@
+{
+  "name": "paper-orchestra-codex",
+  "version": "0.2.0",
+  "description": "Evidence-first research paper writing bridge for Google Research PaperOrchestra.",
+  "author": {
+    "name": "Harmain Dastgir",
+    "url": "https://github.com/Harmain11"
+  },
+  "repository": "https://github.com/Harmain11/paper-orchestra-codex",
+  "license": "MIT",
+  "skills": "./skills/",
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/paper-orchestra-setup/SKILL.md"
+    }
+  },
+  "interface": {
+    "displayName": "PaperOrchestra for Codex",
+    "shortDescription": "Evidence-first AI research writing",
+    "longDescription": "Prepare evidence, verify integrity, and use the original PaperOrchestra CLI to draft manuscripts with explicit user authorization.",
+    "developerName": "Harmain Dastgir",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Harmain11/paper-orchestra-codex",
+    "defaultPrompt": [
+      "Prepare my research evidence for PaperOrchestra without running an API call."
+    ],
+    "brandColor": "#314B67"
+  }
+}
