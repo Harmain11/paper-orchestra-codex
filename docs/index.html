@@ -3,10 +3,86 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="PaperOrchestra for Codex: an evidence-first, safety-conscious workflow to prepare research materials and draft LaTeX papers. Interactive installation guide.">
-<title>PaperOrchestra for Codex · Interactive Setup</title>
+<meta name="description" content="Set up PaperOrchestra for Codex: prepare research evidence, verify file integrity, and optionally draft LaTeX papers. Offline setup guide; model calls stay opt-in.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://harmain11.github.io/paper-orchestra-codex/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PaperOrchestra for Codex">
+<meta property="og:title" content="PaperOrchestra for Codex | Evidence-First Research Plugin">
+<meta property="og:description" content="Prepare research evidence, verify file integrity, and optionally draft LaTeX papers. Explore the offline setup guide for the Codex plugin.">
+<meta property="og:url" content="https://harmain11.github.io/paper-orchestra-codex/">
+<meta property="og:image" content="https://harmain11.github.io/paper-orchestra-codex/assets/hero.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PaperOrchestra for Codex | Evidence-First Research Plugin">
+<meta name="twitter:description" content="Prepare research evidence, verify file integrity, and optionally draft LaTeX papers.">
+<meta name="twitter:image" content="https://harmain11.github.io/paper-orchestra-codex/assets/hero.svg">
+<title>PaperOrchestra for Codex | Evidence-First Research Plugin</title>
 <meta name="theme-color" content="#f7f9fb">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://harmain11.github.io/paper-orchestra-codex/#website",
+      "url": "https://harmain11.github.io/paper-orchestra-codex/",
+      "name": "PaperOrchestra for Codex",
+      "description": "An independent Codex plugin and interactive setup guide for evidence-first research workflows."
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://harmain11.github.io/paper-orchestra-codex/#software",
+      "name": "PaperOrchestra for Codex",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "softwareVersion": "0.2.0",
+      "license": "https://github.com/Harmain11/paper-orchestra-codex/blob/main/LICENSE",
+      "codeRepository": "https://github.com/Harmain11/paper-orchestra-codex",
+      "downloadUrl": "https://github.com/Harmain11/paper-orchestra-codex/releases/download/v0.2.0/paper-orchestra-codex-plugin.zip",
+      "description": "Prepare research evidence, audit file integrity, and optionally use Google Research PaperOrchestra to draft LaTeX manuscripts. Preparation and audit work offline; model-provider calls happen only when a user explicitly runs the optional upstream writing pipeline."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://harmain11.github.io/paper-orchestra-codex/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is PaperOrchestra for Codex an official Google or OpenAI product?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is an independent community integration. It uses Google's separately licensed PaperOrchestra repository; neither Google nor OpenAI has endorsed the wrapper."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it prepare research without an API key?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The prepare and audit features run offline and require no paid API key. The optional upstream PaperOrchestra generation pipeline normally needs model-provider credentials and may incur costs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does installing the plugin send research data anywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Installation does not send research data. Cloning upstream or running the writing pipeline requires explicit user action. If upstream generation is run, research content may be sent to the selected provider."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use PaperOrchestra without Codex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Its Python standard-library bridge can run standalone. See the repository README for commands, input layout, and tests."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <style>
 :root{color-scheme:dark;--bg:#0d1726;--panel:#162439;--panel2:#1b2d42;--text:#f3f6f8;--muted:#a3b7c5;--border:#345166;--mint:#8de7cf;--gold:#eebf7b;--coral:#ffad9a;--radius:18px;font-family:Inter,"Segoe UI",system-ui,-apple-system,sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(ellipse 50% 45% at 100% 0,#1b4549aa 0,transparent 90%),var(--bg);font-size:16px;line-height:1.62}a{color:var(--mint)}a:hover{color:#fff}button,select{font:inherit}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.wrap{max-width:1140px;margin:auto;padding:0 26px}.nav{border-bottom:1px solid #36546a55}.nav>.wrap{height:76px;display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-weight:780;text-decoration:none;color:var(--text);font-size:17px;letter-spacing:-.02em}.brand span{color:var(--mint)}.navlinks{display:flex;gap:22px}.navlinks a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:650}.navlinks a:hover{color:#fff}.hero{padding:90px 0 65px;display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:60px}.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--mint)}.eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 14px var(--mint)}h1{font-size:clamp(40px,5.1vw,68px);line-height:1.08;letter-spacing:-.055em;margin:22px 0 26px;max-width:740px}h1 em{font-style:normal;color:var(--mint)}.hero p,.muted{color:var(--muted)}.hero p{max-width:600px;font-size:18px;line-height:1.75}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.btn{border:1px solid var(--border);padding:12px 18px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:780;color:var(--text);background:#1b2f43;cursor:pointer}.btn.primary{background:var(--mint);color:#0b2729;border-color:var(--mint)}.btn:hover{transform:translateY(-1px);filter:brightness(1.08)}.visual{position:relative;border:1px solid #3c6e72;background:linear-gradient(145deg,#182c40 30%,#1a3443);border-radius:24px;padding:28px;box-shadow:0 24px 70px #050d1a66;min-height:315px}.visual>p{font-size:12px;text-transform:uppercase;letter-spacing:.16em;margin:0 0 25px;color:#d6b77f}.node{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:13px 16px;border-radius:11px;background:#243d51;border:1px solid #53727d;margin:10px 0;font-size:13px}.node strong{font-size:13px}.pill{border-radius:100px;padding:2px 10px;border:1px solid #578879;color:var(--mint);font-size:11px;font-weight:800}.connector{height:20px;border-left:2px dashed #86c3b4;margin-left:26px}.small{font-size:12px;color:var(--muted)}.visual footer{margin-top:18px;color:var(--mint);font-size:12px;font-weight:800}.section{padding:67px 0}.section h2{font-size:clamp(26px,3vw,40px);letter-spacing:-.035em;line-height:1.2;margin:10px 0 16px}.lead{color:var(--muted);max-width:735px;margin-bottom:30px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.card{border:1px solid var(--border);background:#15263a;border-radius:var(--radius);padding:23px;min-width:0}.card .ico{font-size:24px;display:block;margin-bottom:13px}.card h3{font-size:17px;margin:0 0 8px}.card p{color:var(--muted);font-size:14px;margin:0}.builder{border:1px solid #487373;background:linear-gradient(150deg,#1b3244,#142435);padding:26px;border-radius:23px;box-shadow:0 24px 70px #030d1840}.builder-top{display:flex;justify-content:space-between;gap:16px;align-items:start}.builder h3{margin:0;font-size:22px;letter-spacing:-.02em}.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--mint);font-weight:800;margin-bottom:5px}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px}.control label{display:block;margin-bottom:7px;color:#c5d5df;font-size:13px;font-weight:700}select{width:100%;background:#0e1d30;color:#f7fbff;border:1px solid #557083;border-radius:10px;padding:12px 15px;appearance:auto}.step-tabs{display:flex;flex-wrap:wrap;gap:8px;padding:5px;background:#0e1d2d;border-radius:12px;margin-top:22px}.step-tabs button{border:0;border-radius:9px;color:var(--muted);background:transparent;cursor:pointer;padding:9px 14px;flex:1;min-width:150px;font-size:13px;font-weight:750}.step-tabs button[aria-selected="true"]{background:#244a53;color:#e0fff5}.codebox{background:#091624;border:1px solid #38576e;border-radius:12px;overflow:hidden;margin-top:16px}.code-top{padding:11px 15px;background:#173046;border-bottom:1px solid #304b60;display:flex;justify-content:space-between;align-items:center;gap:10px}.code-top span{font-size:12px;color:#bbccd3}.copy{background:#254c50;border:1px solid #4c8a7a;color:#e4fff5;border-radius:8px;padding:5px 13px;cursor:pointer;font-weight:740;font-size:12px}pre{overflow-x:auto;margin:0;padding:22px 20px;color:#d0efe5;font:13px/1.8 Consolas,"SFMono-Regular",monospace;white-space:pre-wrap;word-break:break-word}.notice{padding:13px 17px;background:#322d24;border:1px solid #806a47;color:#ead3a1;border-radius:12px;font-size:13px;margin-top:15px}.footnote{font-size:13px;color:var(--muted);margin:15px 0 0}summary{cursor:pointer;font-weight:750;padding:15px 0}details{border-bottom:1px solid #294257;padding:0 5px}details p{margin:0 0 19px;color:var(--muted)}.end{display:flex;justify-content:space-between;align-items:center;gap:22px;padding:36px 0;border-top:1px solid #36546a66;color:var(--muted);font-size:13px}.logo{font-weight:780;color:var(--text)}.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:850px){.hero{grid-template-columns:1fr;gap:30px;padding-top:57px}.visual{max-width:630px}.grid{grid-template-columns:1fr}.navlinks{gap:13px}.navlinks a{font-size:12px}}@media(max-width:530px){.wrap{padding:0 17px}.navlinks a:nth-child(2){display:none}.hero{padding-top:41px}.form-grid{grid-template-columns:1fr}.builder{padding:16px}.step-tabs button{min-width:100px}.builder-top{flex-direction:column}.end{align-items:start;flex-direction:column}.hero p{font-size:16px}}
