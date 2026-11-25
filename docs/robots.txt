@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://harmain11.github.io/paper-orchestra-codex/sitemap.xml
