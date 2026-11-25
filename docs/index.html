@@ -3,86 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Set up PaperOrchestra for Codex: prepare research evidence, verify file integrity, and optionally draft LaTeX papers. Offline setup guide; model calls stay opt-in.">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="https://harmain11.github.io/paper-orchestra-codex/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="PaperOrchestra for Codex">
-<meta property="og:title" content="PaperOrchestra for Codex | Evidence-First Research Plugin">
-<meta property="og:description" content="Prepare research evidence, verify file integrity, and optionally draft LaTeX papers. Explore the offline setup guide for the Codex plugin.">
-<meta property="og:url" content="https://harmain11.github.io/paper-orchestra-codex/">
-<meta property="og:image" content="https://harmain11.github.io/paper-orchestra-codex/assets/hero.svg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="PaperOrchestra for Codex | Evidence-First Research Plugin">
-<meta name="twitter:description" content="Prepare research evidence, verify file integrity, and optionally draft LaTeX papers.">
-<meta name="twitter:image" content="https://harmain11.github.io/paper-orchestra-codex/assets/hero.svg">
-<title>PaperOrchestra for Codex | Evidence-First Research Plugin</title>
+<meta name="description" content="PaperOrchestra for Codex audits research evidence and drafts LaTeX papers using your active Codex session by default. No separate model API key is needed.">
+<title>PaperOrchestra for Codex · Interactive Setup</title>
 <meta name="theme-color" content="#f7f9fb">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "https://harmain11.github.io/paper-orchestra-codex/#website",
-      "url": "https://harmain11.github.io/paper-orchestra-codex/",
-      "name": "PaperOrchestra for Codex",
-      "description": "An independent Codex plugin and interactive setup guide for evidence-first research workflows."
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": "https://harmain11.github.io/paper-orchestra-codex/#software",
-      "name": "PaperOrchestra for Codex",
-      "applicationCategory": "ProductivityApplication",
-      "operatingSystem": "Windows, macOS, Linux",
-      "softwareVersion": "0.2.0",
-      "license": "https://github.com/Harmain11/paper-orchestra-codex/blob/main/LICENSE",
-      "codeRepository": "https://github.com/Harmain11/paper-orchestra-codex",
-      "downloadUrl": "https://github.com/Harmain11/paper-orchestra-codex/releases/download/v0.2.0/paper-orchestra-codex-plugin.zip",
-      "description": "Prepare research evidence, audit file integrity, and optionally use Google Research PaperOrchestra to draft LaTeX manuscripts. Preparation and audit work offline; model-provider calls happen only when a user explicitly runs the optional upstream writing pipeline."
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://harmain11.github.io/paper-orchestra-codex/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is PaperOrchestra for Codex an official Google or OpenAI product?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. It is an independent community integration. It uses Google's separately licensed PaperOrchestra repository; neither Google nor OpenAI has endorsed the wrapper."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can it prepare research without an API key?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. The prepare and audit features run offline and require no paid API key. The optional upstream PaperOrchestra generation pipeline normally needs model-provider credentials and may incur costs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does installing the plugin send research data anywhere?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Installation does not send research data. Cloning upstream or running the writing pipeline requires explicit user action. If upstream generation is run, research content may be sent to the selected provider."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I use PaperOrchestra without Codex?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Its Python standard-library bridge can run standalone. See the repository README for commands, input layout, and tests."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
 <style>
 :root{color-scheme:dark;--bg:#0d1726;--panel:#162439;--panel2:#1b2d42;--text:#f3f6f8;--muted:#a3b7c5;--border:#345166;--mint:#8de7cf;--gold:#eebf7b;--coral:#ffad9a;--radius:18px;font-family:Inter,"Segoe UI",system-ui,-apple-system,sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(ellipse 50% 45% at 100% 0,#1b4549aa 0,transparent 90%),var(--bg);font-size:16px;line-height:1.62}a{color:var(--mint)}a:hover{color:#fff}button,select{font:inherit}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.wrap{max-width:1140px;margin:auto;padding:0 26px}.nav{border-bottom:1px solid #36546a55}.nav>.wrap{height:76px;display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-weight:780;text-decoration:none;color:var(--text);font-size:17px;letter-spacing:-.02em}.brand span{color:var(--mint)}.navlinks{display:flex;gap:22px}.navlinks a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:650}.navlinks a:hover{color:#fff}.hero{padding:90px 0 65px;display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:60px}.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--mint)}.eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 14px var(--mint)}h1{font-size:clamp(40px,5.1vw,68px);line-height:1.08;letter-spacing:-.055em;margin:22px 0 26px;max-width:740px}h1 em{font-style:normal;color:var(--mint)}.hero p,.muted{color:var(--muted)}.hero p{max-width:600px;font-size:18px;line-height:1.75}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.btn{border:1px solid var(--border);padding:12px 18px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:780;color:var(--text);background:#1b2f43;cursor:pointer}.btn.primary{background:var(--mint);color:#0b2729;border-color:var(--mint)}.btn:hover{transform:translateY(-1px);filter:brightness(1.08)}.visual{position:relative;border:1px solid #3c6e72;background:linear-gradient(145deg,#182c40 30%,#1a3443);border-radius:24px;padding:28px;box-shadow:0 24px 70px #050d1a66;min-height:315px}.visual>p{font-size:12px;text-transform:uppercase;letter-spacing:.16em;margin:0 0 25px;color:#d6b77f}.node{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:13px 16px;border-radius:11px;background:#243d51;border:1px solid #53727d;margin:10px 0;font-size:13px}.node strong{font-size:13px}.pill{border-radius:100px;padding:2px 10px;border:1px solid #578879;color:var(--mint);font-size:11px;font-weight:800}.connector{height:20px;border-left:2px dashed #86c3b4;margin-left:26px}.small{font-size:12px;color:var(--muted)}.visual footer{margin-top:18px;color:var(--mint);font-size:12px;font-weight:800}.section{padding:67px 0}.section h2{font-size:clamp(26px,3vw,40px);letter-spacing:-.035em;line-height:1.2;margin:10px 0 16px}.lead{color:var(--muted);max-width:735px;margin-bottom:30px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.card{border:1px solid var(--border);background:#15263a;border-radius:var(--radius);padding:23px;min-width:0}.card .ico{font-size:24px;display:block;margin-bottom:13px}.card h3{font-size:17px;margin:0 0 8px}.card p{color:var(--muted);font-size:14px;margin:0}.builder{border:1px solid #487373;background:linear-gradient(150deg,#1b3244,#142435);padding:26px;border-radius:23px;box-shadow:0 24px 70px #030d1840}.builder-top{display:flex;justify-content:space-between;gap:16px;align-items:start}.builder h3{margin:0;font-size:22px;letter-spacing:-.02em}.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--mint);font-weight:800;margin-bottom:5px}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px}.control label{display:block;margin-bottom:7px;color:#c5d5df;font-size:13px;font-weight:700}select{width:100%;background:#0e1d30;color:#f7fbff;border:1px solid #557083;border-radius:10px;padding:12px 15px;appearance:auto}.step-tabs{display:flex;flex-wrap:wrap;gap:8px;padding:5px;background:#0e1d2d;border-radius:12px;margin-top:22px}.step-tabs button{border:0;border-radius:9px;color:var(--muted);background:transparent;cursor:pointer;padding:9px 14px;flex:1;min-width:150px;font-size:13px;font-weight:750}.step-tabs button[aria-selected="true"]{background:#244a53;color:#e0fff5}.codebox{background:#091624;border:1px solid #38576e;border-radius:12px;overflow:hidden;margin-top:16px}.code-top{padding:11px 15px;background:#173046;border-bottom:1px solid #304b60;display:flex;justify-content:space-between;align-items:center;gap:10px}.code-top span{font-size:12px;color:#bbccd3}.copy{background:#254c50;border:1px solid #4c8a7a;color:#e4fff5;border-radius:8px;padding:5px 13px;cursor:pointer;font-weight:740;font-size:12px}pre{overflow-x:auto;margin:0;padding:22px 20px;color:#d0efe5;font:13px/1.8 Consolas,"SFMono-Regular",monospace;white-space:pre-wrap;word-break:break-word}.notice{padding:13px 17px;background:#322d24;border:1px solid #806a47;color:#ead3a1;border-radius:12px;font-size:13px;margin-top:15px}.footnote{font-size:13px;color:var(--muted);margin:15px 0 0}summary{cursor:pointer;font-weight:750;padding:15px 0}details{border-bottom:1px solid #294257;padding:0 5px}details p{margin:0 0 19px;color:var(--muted)}.end{display:flex;justify-content:space-between;align-items:center;gap:22px;padding:36px 0;border-top:1px solid #36546a66;color:var(--muted);font-size:13px}.logo{font-weight:780;color:var(--text)}.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:850px){.hero{grid-template-columns:1fr;gap:30px;padding-top:57px}.visual{max-width:630px}.grid{grid-template-columns:1fr}.navlinks{gap:13px}.navlinks a{font-size:12px}}@media(max-width:530px){.wrap{padding:0 17px}.navlinks a:nth-child(2){display:none}.hero{padding-top:41px}.form-grid{grid-template-columns:1fr}.builder{padding:16px}.step-tabs button{min-width:100px}.builder-top{flex-direction:column}.end{align-items:start;flex-direction:column}.hero p{font-size:16px}}
@@ -106,15 +30,14 @@ h1 em{color:#197866}.hero p,.muted{color:#53677a}.lead{color:#53677a}
 .end{border-top-color:#dbe4e9;color:#53677a}.logo{color:#172638}
 
 </style>
-<!-- Pages refresh: light theme -->
 </head>
 <body>
 <header class="nav"><div class="wrap"><a class="brand" href="#top">🎻 PaperOrchestra <span>/ Codex</span></a><nav class="navlinks" aria-label="Main navigation"><a href="#features">Capabilities</a><a href="#builder">Setup builder</a><a href="https://github.com/Harmain11/paper-orchestra-codex">GitHub ↗</a></nav></div></header>
 <main id="top">
-<section class="wrap hero" aria-labelledby="hero-title"><div><div class="eyebrow">Open source · Evidence-first research</div><h1>Better papers.<br><em>Verifiable foundations.</em></h1><p>Connect Codex to Google's PaperOrchestra agents without losing your research trail. Prepare, audit, preview and draft—with every costly operation explicit.</p><div class="cta"><a class="btn primary" href="#builder">Build my setup →</a><a class="btn" href="https://github.com/google-research/paper-orchestra">Explore the upstream project ↗</a></div></div><div class="visual" aria-label="Evidence-driven manuscript pipeline"><p>Research workflow / preview</p><div class="node"><strong>Experiment records</strong><span class="pill">Sources</span></div><div class="connector"></div><div class="node"><strong>SHA-256 evidence snapshot</strong><span class="pill">Check</span></div><div class="connector"></div><div class="node"><strong>Multi-agent drafting</strong><span class="pill">Opt in</span></div><div class="connector"></div><div class="node"><strong>LaTeX manuscript</strong><span class="pill">Review</span></div><footer>Human science → Agent assistance → Human review</footer></div></section>
-<section id="features" class="section"><div class="wrap"><div class="eyebrow">What it gives you</div><h2>Research tooling with the brakes built in.</h2><p class="lead">A community-made plugin, not a substitute for doing the experiments. Create integrity-checked evidence snapshots, then optionally invoke the original PaperOrchestra writer.</p><div class="grid"><article class="card"><span class="ico">🧬</span><h3>Evidence snapshots</h3><p>Copy inputs with file sizes and SHA-256 hashes. Detect tampering, missing files and untracked additions.</p></article><article class="card"><span class="ico">🧭</span><h3>Codex skills</h3><p>Three skills guide setup, evidence auditing and manuscript workflows, while preserving human review.</p></article><article class="card"><span class="ico">🛡️</span><h3>Deliberate execution</h3><p>Dry-run by default. Cloning upstream and invoking external model APIs require explicit execution.</p></article></div></div></section>
+<section class="wrap hero" aria-labelledby="hero-title"><div><div class="eyebrow">Open source · Evidence-first research</div><h1>Better papers.<br><em>Verifiable foundations.</em></h1><p>Use your active Codex session to audit evidence and draft a LaTeX paper without a separate model API key. Prepare, audit and review—with the Google multi-agent runner available only as an optional path.</p><div class="cta"><a class="btn primary" href="#builder">Build my setup →</a><a class="btn" href="https://github.com/google-research/paper-orchestra">Explore the upstream project ↗</a></div></div><div class="visual" aria-label="Evidence-driven manuscript pipeline"><p>Research workflow / preview</p><div class="node"><strong>Experiment records</strong><span class="pill">Sources</span></div><div class="connector"></div><div class="node"><strong>SHA-256 evidence snapshot</strong><span class="pill">Check</span></div><div class="connector"></div><div class="node"><strong>Codex session drafting</strong><span class="pill">Default</span></div><div class="connector"></div><div class="node"><strong>LaTeX manuscript</strong><span class="pill">Review</span></div><footer>Human science → Codex assistance → Human review</footer></div></section>
+<section id="features" class="section"><div class="wrap"><div class="eyebrow">What it gives you</div><h2>Research tooling with the brakes built in.</h2><p class="lead">A community-made plugin, not a substitute for doing the experiments. Create evidence snapshots, ask Codex to draft from verified material, and keep the separate Google API runner optional.</p><div class="grid"><article class="card"><span class="ico">🧬</span><h3>Evidence snapshots</h3><p>Copy inputs with file sizes and SHA-256 hashes. Detect tampering, missing files and untracked additions.</p></article><article class="card"><span class="ico">🧭</span><h3>Codex skills</h3><p>Three skills guide setup, evidence auditing and manuscript workflows, while preserving human review.</p></article><article class="card"><span class="ico">🛡️</span><h3>Codex-native drafting</h3><p>Draft with the model in your active Codex session by default; no separate provider API key is needed. The optional Google runner can incur separate API charges.</p></article></div></div></section>
 <section class="section" id="builder"><div class="wrap"><div class="eyebrow">Interactive setup</div><h2>Choose your environment. Copy your command.</h2><p class="lead">This builder runs entirely in your browser. It does not connect to GitHub, install software, check credentials, or call an AI provider.</p><div class="builder"><div class="builder-top"><div><div class="kicker">01 / Configure</div><h3>Personalized quickstart</h3></div><span class="pill">Local commands only</span></div><div class="form-grid"><div class="control"><label for="os">Your operating system</label><select id="os"><option value="win">Windows PowerShell</option><option value="unix">macOS / Linux</option></select></div><div class="control"><label for="provider">Planned model provider</label><select id="provider"><option value="gemini">Gemini / Vertex AI</option><option value="openai">OpenAI</option></select></div></div><div class="step-tabs" role="tablist" aria-label="Setup step"><button type="button" role="tab" id="t-install" data-tab="install" aria-selected="true" aria-controls="panel">1 · Install</button><button type="button" role="tab" id="t-prepare" data-tab="prepare" aria-selected="false" aria-controls="panel">2 · Prepare</button><button type="button" role="tab" id="t-write" data-tab="write" aria-selected="false" aria-controls="panel">3 · Draft</button></div><div id="panel" role="tabpanel" aria-labelledby="t-install" tabindex="0"><div class="codebox"><div class="code-top"><span id="code-title">Marketplace installation</span><button class="copy" id="copy" type="button" aria-label="Copy command">Copy command</button></div><pre id="command" aria-live="polite"></pre></div><p class="footnote" id="guide"></p><div class="notice" id="warning" role="note"></div></div></div></div></section>
-<section class="section"><div class="wrap"><div class="eyebrow">Frequently asked</div><h2>What this does—and doesn't do.</h2><details><summary>Is this an official Google or OpenAI product?</summary><p>No. This is an independent community integration. It uses Google's separately licensed PaperOrchestra repository; neither Google nor OpenAI has endorsed the wrapper.</p></details><details><summary>Can it generate a paper without an API key?</summary><p>The <b>prepare</b> and <b>audit</b> features run offline. The upstream PaperOrchestra generation pipeline normally needs model-provider credentials and may incur costs.</p></details><details><summary>Will it improve model accuracy or validate my claims?</summary><p>No. It preserves and checks evidence files, but verification of experimental design, p-values, citations, and conclusions remains a researcher responsibility.</p></details><details><summary>Does installing the plugin send my data anywhere?</summary><p>No. A user must explicitly approve cloning upstream or running the writing pipeline. If you execute upstream generation, research content may be sent to your selected provider.</p></details><details><summary>Can I run it without Codex?</summary><p>Yes. The Python standard-library bridge can run standalone. See the main README for command descriptions, input layout and testing instructions.</p></details></div></section>
+<section class="section"><div class="wrap"><div class="eyebrow">Frequently asked</div><h2>What this does—and doesn't do.</h2><details><summary>Is this an official Google or OpenAI product?</summary><p>No. This is an independent community integration. It references Google's separately licensed PaperOrchestra project; neither Google nor OpenAI has endorsed this wrapper.</p></details><details><summary>Can I draft using Codex without a separate API key?</summary><p>Yes. The default workflow drafts in your active Codex session and does not need a separate Gemini, Vertex, or OpenAI API key. Python is only needed for local evidence snapshot and hash-audit helpers. Google's optional multi-agent runner is separate and may need paid provider credentials.</p></details><details><summary>Will it improve model accuracy or validate my claims?</summary><p>No. It preserves and checks evidence files, but verification of experimental design, p-values, citations, and conclusions remains a researcher responsibility.</p></details><details><summary>Does installing the plugin send my data anywhere?</summary><p>Installing it and running local hashing do not send your research files to a model provider. When you draft in Codex, follow your Codex account's data controls. If you explicitly run the optional Google pipeline, research content may be sent to your selected provider.</p></details><details><summary>Can I run it without Codex?</summary><p>Yes. The Python standard-library bridge can create evidence snapshots and verify file hashes standalone. See the main README for command descriptions, input layout and testing instructions.</p></details></div></section>
 </main><footer class="wrap end"><div><span class="logo">🎻 PaperOrchestra for Codex</span><div>Evidence first. Agents second. Humans responsible.</div></div><div><a href="https://github.com/Harmain11/paper-orchestra-codex">Repository</a> · <a href="https://github.com/Harmain11/paper-orchestra-codex/blob/main/SECURITY.md">Security</a> · <a href="https://github.com/google-research/paper-orchestra">Original PaperOrchestra</a></div></footer>
 <script>
 'use strict';
