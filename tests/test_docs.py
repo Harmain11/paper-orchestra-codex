@@ -50,6 +50,10 @@ class DocsTests(unittest.TestCase):
         manifest=json.loads((ROOT/'plugins/paper-orchestra-codex/.codex-plugin/plugin.json').read_text())
         portable=json.loads((ROOT/'plugins/paper-orchestra-codex/plugin.json').read_text())
         self.assertTrue(manifest.get('skills'))
+        plugin_root=ROOT/'plugins/paper-orchestra-codex'
+        self.assertTrue((plugin_root/'SECURITY.md').is_file())
+        self.assertIn('`SECURITY.md`', (plugin_root/'skills/paper-orchestra-setup/SKILL.md').read_text())
+        self.assertEqual(portable.get('version'), '0.2.1')
         self.assertEqual(manifest.get('version'),portable.get('version'))
         self.assertIn('version: '+portable['version'],(ROOT/'CITATION.cff').read_text())
         self.assertTrue((ROOT/'.github/workflows/pages.yml').exists())
