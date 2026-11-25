@@ -27,7 +27,7 @@ class DocsTests(unittest.TestCase):
         p = Markup()
         p.feed((DOCS/'index.html').read_text(encoding='utf-8'))
         self.assertTrue({'os','provider','command','copy','guide','warning','panel','code-title'}.issubset(p.ids))
-        self.assertTrue(all(src is None for src in p.scripts), 'Page scripts must remain local and inline')
+        self.assertTrue(all(src is None for src, kind in p.scripts), 'Page scripts must remain local and inline')
         self.assertEqual(sum(1 for src, kind in p.scripts if kind == 'application/ld+json'), 1)
         self.assertEqual(sum(1 for src, kind in p.scripts if kind in (None, 'text/javascript')), 1)
         self.assertIn('favicon.svg',p.links)
