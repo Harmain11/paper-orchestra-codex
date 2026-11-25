@@ -1,0 +1,26 @@
+name: Feature request
+description: Propose an improvement to the plugin's workflow.
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: What problem do you face in a research-paper workflow?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Include a minimal input/output example where possible.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety boundaries
+      options:
+        - label: I understand generated scientific claims still need independent verification.
+          required: true
