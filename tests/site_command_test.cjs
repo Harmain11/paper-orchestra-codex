@@ -13,7 +13,7 @@ function element(id,value=''){
   addEventListener(type,fn){(events[id+':'+type]??=[]).push(fn)},
   setAttribute(k,v){this.attributes[k]=v},};
 }
-const els={os:element('os','win'),provider:element('provider','gemini'),command:element('command'),'code-title':element('code-title'),guide:element('guide'),warning:element('warning'),panel:element('panel'),copy:element('copy')};
+const els={os:element('os','win'),provider:element('provider','codex'),command:element('command'),'code-title':element('code-title'),guide:element('guide'),warning:element('warning'),panel:element('panel'),copy:element('copy')};
 const tabs=['install','prepare','write'].map(name=>element('t-'+name));
 const document={querySelector(sel){return els[sel.slice(1)]},querySelectorAll(sel){assert.equal(sel,'[data-tab]');return tabs}};
 const navigator={clipboard:{async writeText(x){navigator.lastCopied=x}}};
@@ -22,15 +22,17 @@ vm.runInNewContext(source,ctx,{timeout:2000});
 function fire(id,type='click'){
  for(const fn of events[id+':'+type]||[])fn();
 }
-assert.match(els.command.textContent,/codex plugin marketplace add Harmain11\/paper-orchestra-codex/);
+assert.match(els.command.textContent,/Customize → Plugins/);
+assert.match(els.warning.textContent,/No separate model API key/);
 fire('t-prepare');
 assert.match(els.command.textContent,/po_bridge\.py prepare/);
 assert.match(els.command.textContent,/po_bridge\.py audit/);
 els.os.value='unix';fire('os','change');
 assert.match(els.command.textContent,/python3\.11/);
 fire('t-write');
-assert.match(els.command.textContent,/po_bridge\.py run/);
-assert.match(els.command.textContent,/DRY RUN|Preview only|Preview/);
+assert.match(els.command.textContent,/active Codex session/);
+assert.match(els.command.textContent,/Do not run Google PaperOrchestra/);
 els.provider.value='openai';fire('provider','change');
 assert.match(els.warning.textContent,/OpenAI/);
+assert.match(els.command.textContent,/po_bridge\.py run/);
 console.log('site-command-tests:PASS');
