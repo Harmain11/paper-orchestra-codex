@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1 — 2026-11-25
+
+- Bundle `SECURITY.md` in the installable plugin so setup guidance is available in Codex's plugin cache.
+- Keep portable and Codex compatibility manifests, citation metadata, and bridge version synchronized.
+
 ## 0.2.0 — 2026-11-25
 
 - Public GitHub presentation with an interactive static GitHub Pages command builder.
