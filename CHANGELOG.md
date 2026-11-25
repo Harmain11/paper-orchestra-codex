@@ -1,9 +1,10 @@
 # Changelog
 
-## 0.2.1 — 2026-11-25
+## 0.2.2 — 2026-11-25
 
-- Bundle `SECURITY.md` in the installable plugin so setup guidance is available in Codex's plugin cache.
-- Keep portable and Codex compatibility manifests, citation metadata, and bridge version synchronized.
+- Make drafting with the active Codex session the default writing workflow.
+- Clarify that Python is needed only for local evidence snapshot and integrity helpers.
+- Keep Google's separate API-based PaperOrchestra runner optional and explicit.
 
 ## 0.2.0 — 2026-11-25
 
