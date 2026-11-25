@@ -1,0 +1,29 @@
+name: Bug report
+description: Report a reproducible problem without sharing API keys or private datasets.
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include secrets, private manuscripts, API credentials, or research data you cannot share."
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: "OS, Python version and Codex version"
+      placeholder: "Windows 11 / Python 3.11 / Codex ..."
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      description: "Use synthetic or public data in examples."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs actual behavior
+    validations:
+      required: true
