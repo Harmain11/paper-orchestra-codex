@@ -9,7 +9,7 @@ import tempfile
 if not shutil.which('node'):
     print('Node missing; cannot validate documentation JavaScript.',file=sys.stderr)
     raise SystemExit(1)
-html=(pathlib.Path(__file__).resolve().parents[1]/'docs/index.html').read_text()
+html=(pathlib.Path(__file__).resolve().parents[1]/'docs/index.html').read_text(encoding='utf-8')
 m=re.search(r'<script>(.*?)</script>',html,re.S)
 if not m:
     raise SystemExit('No inline script found')
