@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "paper-orchestra-codex",
-  "version": "0.2.1",
-  "description": "An evidence-first Codex workflow for preparing, auditing, and writing research papers with Google Research's PaperOrchestra.",
+  "version": "0.2.2",
+  "description": "Evidence-first research auditing and Codex-native paper writing, with Google's separate multi-agent runner as an optional path.",
   "author": {
     "name": "Harmain Dastgir",
     "url": "https://github.com/Harmain11"
@@ -24,8 +24,8 @@
       "onboardingSkill": "./skills/paper-orchestra-setup/SKILL.md",
       "interface": {
         "displayName": "PaperOrchestra for Codex",
-        "shortDescription": "Evidence-first AI research writing",
-        "longDescription": "Prepare traceable research material, audit inputs, and optionally run Google's PaperOrchestra multi-agent manuscript pipeline. Requires local Python and user-supplied model credentials for generation.",
+        "shortDescription": "Audit evidence and draft with Codex",
+        "longDescription": "Audit research evidence and draft papers with the active Codex session by default. Python supports optional local integrity checks; Google's separate API-based multi-agent pipeline is optional.",
         "developerName": "Harmain Dastgir",
         "category": "Productivity",
         "capabilities": [
@@ -35,8 +35,9 @@
         "websiteURL": "https://github.com/Harmain11/paper-orchestra-codex",
         "defaultPrompt": [
           "Use PaperOrchestra to audit the evidence in my research project before writing a paper.",
-          "Prepare a PaperOrchestra material bundle from my experiment logs and figures, but don't run paid models.",
-          "Use the PaperOrchestra writing workflow to draft a LaTeX manuscript from verified evidence. Show a dry-run first."
+          "Prepare a local evidence bundle and draft with this Codex session. Do not call external model APIs.",
+          "Draft a LaTeX manuscript from verified evidence using Codex. Mark unsupported claims and do not invent citations.",
+          "Show me how the optional Google PaperOrchestra API pipeline differs before running it."
         ],
         "brandColor": "#314B67"
       }
