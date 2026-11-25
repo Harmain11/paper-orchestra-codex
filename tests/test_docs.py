@@ -61,6 +61,7 @@ class DocsTests(unittest.TestCase):
         portable=json.loads((ROOT/'plugins/paper-orchestra-codex/plugin.json').read_text())
         self.assertTrue(manifest.get('skills'))
         self.assertEqual(manifest.get('version'),portable.get('version'))
+        self.assertLessEqual(len(portable['extensions']['com.openai']['interface']['shortDescription']),30)
         self.assertIn('version: '+portable['version'],(ROOT/'CITATION.cff').read_text())
         self.assertTrue((ROOT/'.github/workflows/pages.yml').exists())
 
