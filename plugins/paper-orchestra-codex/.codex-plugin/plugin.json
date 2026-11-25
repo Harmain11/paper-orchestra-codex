@@ -16,7 +16,7 @@
   },
   "interface": {
     "displayName": "PaperOrchestra for Codex",
-    "shortDescription": "Audit evidence and draft with Codex",
+    "shortDescription": "Audit & write with Codex",
     "longDescription": "Audit evidence and draft papers with the active Codex session by default. Google's separate API-based multi-agent runner is optional.",
     "developerName": "Harmain Dastgir",
     "category": "Productivity",
