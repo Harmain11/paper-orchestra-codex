@@ -19,7 +19,7 @@ class Markup(HTMLParser):
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if 'id' in attrs: self.ids.add(attrs['id'])
-        if tag == 'script': self.scripts.append(attrs.get('src'))
+        if tag == 'script': self.scripts.append((attrs.get('src'), attrs.get('type')))
         if tag == 'link': self.links.append(attrs.get('href'))
 
 class DocsTests(unittest.TestCase):
@@ -27,7 +27,9 @@ class DocsTests(unittest.TestCase):
         p = Markup()
         p.feed((DOCS/'index.html').read_text(encoding='utf-8'))
         self.assertTrue({'os','provider','command','copy','guide','warning','panel','code-title'}.issubset(p.ids))
-        self.assertEqual(p.scripts, [None])
+        self.assertTrue(all(src is None for src in p.scripts), 'Page scripts must remain local and inline')
+        self.assertEqual(sum(1 for src, kind in p.scripts if kind == 'application/ld+json'), 1)
+        self.assertEqual(sum(1 for src, kind in p.scripts if kind in (None, 'text/javascript')), 1)
         self.assertIn('favicon.svg',p.links)
         self.assertTrue((DOCS/'favicon.svg').exists())
 
