@@ -29,8 +29,8 @@ class DocsTests(unittest.TestCase):
         setup=(plugin/'skills/paper-orchestra-setup/SKILL.md').read_text(encoding='utf-8')
         manifest=json.loads((plugin/'plugin.json').read_text(encoding='utf-8'))
         self.assertIn('default writing engine is the model in this active Codex session',writing)
-        self.assertIn('does not need a separate Gemini, Vertex, or OpenAI API key',writing)
-        self.assertIn('optional Google multi-agent runner',writing)
+        self.assertIn('does not need a separate Gemini, Vertex, or OpenAI API key',' '.join(writing.split()))
+        self.assertIn('Optional Google multi-agent runner',writing)
         self.assertIn('Codex-native drafting does not require Python',setup)
         prompts=manifest['extensions']['com.openai']['interface']['defaultPrompt']
         self.assertTrue(any('this Codex session' in prompt for prompt in prompts))
