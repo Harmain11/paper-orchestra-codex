@@ -1,0 +1,18 @@
+# Credentials and local runtime
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.paper-orchestra-upstream/
+paper-orchestra-upstream/
+# Generated research outputs / confidential inputs
+output/
+outputs/
+work/
+paper_output_*/
+*.log
+.DS_Store
