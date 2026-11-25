@@ -1,0 +1,45 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "paper-orchestra-codex",
+  "version": "0.2.0",
+  "description": "An evidence-first Codex workflow for preparing, auditing, and writing research papers with Google Research's PaperOrchestra.",
+  "author": {
+    "name": "Harmain Dastgir",
+    "url": "https://github.com/Harmain11"
+  },
+  "homepage": "https://github.com/Harmain11/paper-orchestra-codex",
+  "repository": "https://github.com/Harmain11/paper-orchestra-codex",
+  "license": "MIT",
+  "keywords": [
+    "research",
+    "academic-writing",
+    "codex",
+    "latex",
+    "paper-orchestra",
+    "reproducibility"
+  ],
+  "extensions": {
+    "com.openai": {
+      "requires_local_executor": true,
+      "onboardingSkill": "./skills/paper-orchestra-setup/SKILL.md",
+      "interface": {
+        "displayName": "PaperOrchestra for Codex",
+        "shortDescription": "Evidence-first AI research writing",
+        "longDescription": "Prepare traceable research material, audit inputs, and optionally run Google's PaperOrchestra multi-agent manuscript pipeline. Requires local Python and user-supplied model credentials for generation.",
+        "developerName": "Harmain Dastgir",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://github.com/Harmain11/paper-orchestra-codex",
+        "defaultPrompt": [
+          "Use PaperOrchestra to audit the evidence in my research project before writing a paper.",
+          "Prepare a PaperOrchestra material bundle from my experiment logs and figures, but don't run paid models.",
+          "Use the PaperOrchestra writing workflow to draft a LaTeX manuscript from verified evidence. Show a dry-run first."
+        ],
+        "brandColor": "#314B67"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this Codex integration, please cite its GitHub repository. Please also cite the original PaperOrchestra research and software when using the upstream pipeline."
+title: "PaperOrchestra for Codex"
+type: software
+authors:
+  - family-names: Dastgir
+    given-names: Harmain
+repository-code: "https://github.com/Harmain11/paper-orchestra-codex"
+url: "https://harmain11.github.io/paper-orchestra-codex/"
+license: MIT
+version: 0.2.0
+date-released: 2026-11-25

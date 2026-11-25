@@ -298,4 +298,3 @@ CI runs on Ubuntu and Windows. The `docs/` static site can be published with the
 Made with care by [Harmain Dastgir](https://github.com/Harmain11) · Independent community integration.
 
 </div>
-

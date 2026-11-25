@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="330" viewBox="0 0 1280 330" role="img" aria-labelledby="title desc">
+<title id="title">PaperOrchestra for Codex</title>
+<desc id="desc">A graphic of research evidence moving through coordinated agents into a manuscript, in ink blue, seafoam and gold.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101b2b"/><stop offset="1" stop-color="#172a40"/></linearGradient><linearGradient id="glow" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#6bd2c1"/><stop offset="1" stop-color="#a9dded"/></linearGradient><filter id="soft"><feGaussianBlur stdDeviation="30"/></filter></defs>
+<rect width="1280" height="330" rx="26" fill="url(#bg)"/>
+<circle cx="1210" cy="30" r="150" fill="#1b5a5b" opacity=".32" filter="url(#soft)"/><circle cx="90" cy="285" r="150" fill="#244865" opacity=".4" filter="url(#soft)"/>
+<g opacity=".14" stroke="#8edccd"><path d="M0 50H1280M0 100H1280M0 150H1280M0 200H1280M0 250H1280M0 300H1280"/><path d="M100 0V330M200 0V330M300 0V330M400 0V330M500 0V330M600 0V330M700 0V330M800 0V330M900 0V330M1000 0V330M1100 0V330M1200 0V330"/></g>
+<g font-family="Inter,Segoe UI,Arial,sans-serif">
+<text x="74" y="94" font-size="15" letter-spacing="5" fill="#7ed4c4" font-weight="700">OPEN SOURCE / CODEX PLUGIN</text>
+<text x="72" y="163" font-size="52" fill="#f7f7f4" font-weight="750">PaperOrchestra</text>
+<text x="75" y="208" font-size="25" fill="#d7e3ed">for Codex</text>
+<text x="75" y="256" font-size="18" fill="#9ab6c6">Evidence-first research writing. Human-verified science.</text>
+</g>
+<g transform="translate(783 55)" fill="none" stroke-width="2.5"><path d="M85 100L205 35 320 98M85 100L205 175 320 98" stroke="#6bd2c1" opacity=".65"/><path d="M205 35V175" stroke="#6bd2c1" opacity=".3"/><rect x="0" y="62" width="147" height="80" rx="16" fill="#1b3447" stroke="#397d79"/><rect x="157" y="0" width="100" height="67" rx="13" fill="#1b3447" stroke="#397d79"/><rect x="157" y="151" width="100" height="67" rx="13" fill="#1b3447" stroke="#397d79"/><rect x="286" y="59" width="132" height="80" rx="15" fill="#1b3447" stroke="#e8c084"/></g>
+<g font-family="Inter,Segoe UI,Arial,sans-serif" text-anchor="middle" font-weight="650" font-size="15"><text x="856" y="151" fill="#c9e8e2">Evidence</text><text x="988" y="95" fill="#c9e8e2">Agents</text><text x="988" y="248" fill="#c9e8e2">Audit</text><text x="1134" y="150" fill="#f5d69a">Paper</text></g>
+<g stroke="url(#glow)" stroke-linecap="round"><path d="M803 121h58m-58 8h43m-43 8h49" stroke-width="2" opacity=".45"/></g>
+</svg>
