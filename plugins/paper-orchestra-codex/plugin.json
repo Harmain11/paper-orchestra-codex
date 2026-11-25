@@ -24,7 +24,7 @@
       "onboardingSkill": "./skills/paper-orchestra-setup/SKILL.md",
       "interface": {
         "displayName": "PaperOrchestra for Codex",
-        "shortDescription": "Audit evidence and draft with Codex",
+        "shortDescription": "Audit & write with Codex",
         "longDescription": "Audit research evidence and draft papers with the active Codex session by default. Python supports optional local integrity checks; Google's separate API-based multi-agent pipeline is optional.",
         "developerName": "Harmain Dastgir",
         "category": "Productivity",
