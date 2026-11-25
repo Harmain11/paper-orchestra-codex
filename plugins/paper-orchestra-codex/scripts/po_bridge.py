@@ -18,7 +18,7 @@ import subprocess
 import sys
 
 UPSTREAM_URL = "https://github.com/google-research/paper-orchestra.git"
-PLUGIN_VERSION = "0.2.0"
+PLUGIN_VERSION = "0.2.1"
 REQUIRED = ("idea_sparse.md", "experimental_log.md")
 EXCLUDED_DIRS = {".git", ".venv", "venv", "__pycache__", ".pytest_cache"}
 EXCLUDED_FILES = {".env", ".env.local", "id_rsa", "id_ed25519", "secrets.json", "credentials.json"}
