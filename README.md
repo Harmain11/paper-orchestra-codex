@@ -4,7 +4,7 @@
 
 ### From experiment logs to reviewable papers, without losing the evidence.
 
-A community-built **Codex plugin** for [Google Research's PaperOrchestra](https://github.com/google-research/paper-orchestra). Prepare a traceable research snapshot, run integrity checks, and **optionally** orchestrate LaTeX manuscript drafting with the original PaperOrchestra agents.
+A community-built **Codex plugin** for evidence-first research writing. Prepare a traceable research snapshot, run integrity checks, and draft manuscripts with the model in your active Codex session. Google's original PaperOrchestra multi-agent runner remains an optional, separate integration.
 
 [![CI](https://github.com/Harmain11/paper-orchestra-codex/actions/workflows/ci.yml/badge.svg)](https://github.com/Harmain11/paper-orchestra-codex/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-356f9c?logo=python&logoColor=white)](https://python.org/)
@@ -17,16 +17,16 @@ A community-built **Codex plugin** for [Google Research's PaperOrchestra](https:
 </div>
 
 > [!IMPORTANT]
-> This is an **independent community integration**, not an official Google, Google Research, OpenAI, or Codex product. The plugin does **not** automatically verify scientific claims, create new GPU results, or guarantee publication. The original PaperOrchestra Python pipeline is a separate installation; model API usage may incur charges.
+> This is an **independent community integration**, not an official Google, Google Research, OpenAI, or Codex product. The plugin does **not** automatically verify scientific claims, create new GPU results, or guarantee publication. The default writing workflow uses the active Codex session and does not require a separate provider API key. Google's original PaperOrchestra runner is a separate, optional installation and may incur API charges.
 
 ## Why this exists
 
 Writing a paper is easier than validating one. This plugin keeps **source evidence and source-derived claims** ahead of manuscript generation, and makes the costly actions deliberate.
 
-| 🧬 Evidence first | 🔎 Checkable by default | 🎻 Original writing pipeline |
+| 🧬 Evidence first | 🔎 Checkable by default | ✍️ Draft with Codex |
 |:--|:--|:--|
-| Snapshot source logs, protocols and approved figures | Verify file integrity with SHA-256 and refuse altered bundles | Use PaperOrchestra for outline, literature synthesis, drafting and LaTeX |
-| Never turn example data into research findings | Separate hashes from statistical and citation verification | Run only when the user explicitly approves external model calls |
+| Snapshot source logs, protocols and approved figures | Verify file integrity with SHA-256 and refuse altered bundles | Draft outlines and LaTeX in the active Codex session |
+| Never turn example data into research findings | Separate hashes from scientific and citation verification | Optional upstream Google runner remains separate and requires explicit approval |
 
 ```mermaid
 flowchart LR
@@ -34,9 +34,10 @@ flowchart LR
   B --> C{Hash audit}
   C -->|Pass| D[Review & approve]
   C -->|Fail| X[Stop and fix inputs]
-  D -->|Dry run| E[Preview upstream command]
-  E -->|Execute only with approval| F[Google PaperOrchestra]
-  F --> G[Draft LaTeX manuscript]
+  D -->|Default| E[Draft in Codex session]
+  D -->|Optional, explicit approval| F[Google PaperOrchestra runner]
+  E --> G[Draft LaTeX manuscript]
+  F --> G
   G --> H[Human claim & citation review]
   classDef good fill:#daf8ed,color:#135544,stroke:#62b39a
   classDef caution fill:#fff4dd,color:#79551b,stroke:#dbb86c
@@ -70,7 +71,7 @@ Install the plugin from the local marketplace UI. If your Codex build doesn't pr
 <details>
 <summary><b>What does Codex actually install?</b></summary>
 
-It discovers the marketplace manifest at `.agents/plugins/marketplace.json`, which points to the packaged plugin. The plugin contains three reusable skills and a local Python bridge. The Google Research repository, Python packages and model API credentials are **not bundled or automatically installed**.
+It discovers the marketplace manifest at `.agents/plugins/marketplace.json`, which points to the packaged plugin. The plugin contains three reusable skills and a local Python bridge. Drafting uses the active Codex session by default and does not need a separate API key. Python is needed only for local snapshot and hash-audit helpers; the Google Research repository, Python packages and provider credentials for its optional runner are **not bundled or automatically installed**.
 
 </details>
 
@@ -91,7 +92,14 @@ The bundled demo uses **fictional materials only**. Replace it with real experim
 </details>
 
 <details>
-<summary><b>02 · I want to set up Google's upstream PaperOrchestra</b> — network action requires approval</summary>
+<summary><b>02 · I want local evidence checks</b> — Python optional for writing
+
+Python is required only to create the reproducible evidence bundle and verify its SHA-256 manifest. If `python` is unavailable, Codex can still inspect files and draft, but must label the hash audit as not run.
+
+</details>
+
+<details>
+<summary><b>03 · I want to set up Google's upstream PaperOrchestra</b> — network action requires approval</summary>
 
 ```bash
 python plugins/paper-orchestra-codex/scripts/po_bridge.py doctor
@@ -105,7 +113,16 @@ Create a **Python 3.11+** virtual environment inside the upstream project, insta
 </details>
 
 <details>
-<summary><b>03 · I want a complete LaTeX draft</b> — API fees possible</summary>
+<summary><b>04 · I want a complete LaTeX draft using Codex</b> — no separate provider API key
+
+After auditing the evidence, ask the plugin to draft a LaTeX manuscript in the active Codex session. You do not need to install Google's runner, configure a Gemini/OpenAI API key, or run a separate model command. Review all claims and references before using the draft.
+
+If you specifically want Google's original multi-agent runner, choose the optional path below. It requires its own checkout and provider credentials, and may incur charges.
+
+</details>
+
+<details>
+<summary><b>05 · I specifically want Google's multi-agent runner</b> — separate provider usage possible</summary>
 
 First create and audit a bundle containing **real evidence** and install upstream PaperOrchestra. Then preview the invocation:
 
@@ -118,7 +135,7 @@ Nothing runs until you repeat the reviewed command with `--execute`. PaperOrches
 </details>
 
 <details>
-<summary><b>04 · I'm building my own research agent</b> — use the bridge as a component</summary>
+<summary><b>06 · I'm building my own research agent</b> — use the bridge as a component</summary>
 
 The bridge is Python standard-library only; `doctor`, `prepare`, `audit`, `setup`, and `run` are callable from a terminal or agent. Keep the original upstream PaperOrchestra dependency outside this repo. Read [research integrity rules](plugins/paper-orchestra-codex/references/RESEARCH_INTEGRITY.md), [contributing](CONTRIBUTING.md), and the [test suite](tests/test_bridge.py).
 
@@ -222,9 +239,9 @@ tests/test_bridge.py                        Offline regression tests
 ## FAQ
 
 <details>
-<summary><b>Do I need an OpenAI API key?</b></summary>
+<summary><b>Do I need a separate API key if I already use Codex?</b></summary>
 
-Not necessarily. Google PaperOrchestra supports Gemini / Vertex AI and OpenAI providers with suitable credentials. **A Codex subscription is not an external API credit balance.** The plugin's offline audit commands need no API key.
+No. The default workflow drafts with the model in your active Codex session and does not need a separate Gemini, Vertex, or OpenAI API key. The optional Google PaperOrchestra runner is a separate program and needs its own provider credentials; it can incur API charges. Python is only needed for the plugin's local evidence snapshot and hash-audit helpers.
 
 </details>
 
@@ -245,7 +262,7 @@ It can invoke a workflow intended to produce submission-ready LaTeX, but **scien
 <details>
 <summary><b>Does installing this plugin send my research data to an API?</b></summary>
 
-No. Setup and execution are explicit operations, and local hashing does not access external APIs. `run --execute` starts Google's upstream pipeline, which may send your provided research materials to configured model providers.
+No. Installing the plugin and running local hashing do not send research files to an external model provider. When you draft in Codex, follow the data controls for your Codex account. `run --execute` starts Google's optional upstream pipeline, which may send provided research materials to configured model providers.
 
 </details>
 
